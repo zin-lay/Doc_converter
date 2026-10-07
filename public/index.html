@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Document → Image Converter</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <img class="logo" src="logo.png" srcset="logo.png 1x, logo@2x.png 2x" alt="Nexora Tech" width="228" height="120">
+      <div class="brand-text">
+        <h1>Document → Image Converter</h1>
+        <p>Turn PDF, Word and PowerPoint pages into sharp images — right on your machine.</p>
+      </div>
+    </div>
+    <span class="model" id="engine">Checking…</span>
+  </header>
+
+  <div class="grid">
+    <!-- SOURCE / OPTIONS -->
+    <section class="pane controls" aria-labelledby="src-h">
+      <h2 id="src-h">Source document</h2>
+      <div class="drop" id="drop" tabindex="0" role="button" aria-label="Choose a file to convert">
+        <strong>Drop a file here or click to choose</strong>
+        <span id="accept">PDF, Word (.docx), PowerPoint (.pptx)</span>
+      </div>
+      <input type="file" id="file" hidden>
+      <div class="doc-meta">
+        <span id="docName">No file chosen</span>
+        <button class="link" id="clear" type="button" hidden>Clear</button>
+      </div>
+
+      <div class="field">
+        <label class="l">Image format</label>
+        <div class="modes" id="fmt" role="group" aria-label="Image format">
+          <button class="chip" type="button" data-v="png" aria-pressed="true">PNG — sharpest</button>
+          <button class="chip" type="button" data-v="jpg" aria-pressed="false">JPG — smaller</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="l" for="dpi">Resolution</label>
+        <select id="dpi">
+          <option value="96">Screen — 96 DPI</option>
+          <option value="150" selected>Standard — 150 DPI</option>
+          <option value="220">High — 220 DPI</option>
+          <option value="300">Print — 300 DPI</option>
+        </select>
+      </div>
+
+      <div class="field" id="qualityField" hidden>
+        <label class="l" for="quality">JPG quality — <span id="qval">90</span></label>
+        <input type="range" id="quality" min="50" max="100" value="90">
+      </div>
+
+      <div class="field">
+        <label class="l" for="pages">Pages (optional)</label>
+        <input type="text" id="pages" placeholder="e.g. 1-5  (leave blank for all)">
+      </div>
+
+      <div class="actions">
+        <button class="btn" id="go" type="button" disabled>Convert to images</button>
+      </div>
+      <p class="notice" id="notice" hidden></p>
+    </section>
+
+    <!-- RESULT -->
+    <section class="pane result" aria-labelledby="out-h">
+      <div class="out-head">
+        <h2 id="out-h">Images</h2>
+        <button class="btn" id="dlZip" type="button" disabled hidden>Download all (ZIP)</button>
+      </div>
+      <div class="status" id="status" aria-live="polite"></div>
+      <div class="progress" id="prog"><i></i></div>
+      <div id="gallery" class="gallery"><p class="empty">Choose a document and select “Convert to images”. The pages appear here, ready to download.</p></div>
+    </section>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
