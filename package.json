@@ -1,0 +1,16 @@
+{
+  "name": "nexora-document-image-converter",
+  "version": "1.0.0",
+  "description": "Self-hosted, high-fidelity document-to-image converter. Turns PDF, Word and PowerPoint pages into PNG or JPG images locally — no API key, nothing leaves your machine.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node scripts/check.js"
+  },
+  "engines": { "node": ">=18.17" },
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jszip": "3.10.1"
+  }
+}

@@ -1,0 +1,12 @@
+services:
+  converter:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3100
+    ports:
+      - "127.0.0.1:3100:3100"   # change to "3100:3100" to allow other computers (set APP_PASSWORD first)
